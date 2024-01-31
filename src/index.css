@@ -10,7 +10,7 @@ body {
 
 :root {
   --primary-color: #2026d2;
-  --secondary-color: #61dafb;
+  --secondary-color: #FFFFFF;
   --background-color-primary: #FFFFFF;
   --background-color-secondary: #FCFDFF;
   --button-color-primary: var(--primary-color);
