@@ -23,13 +23,23 @@ const GlobalStyles = createGlobalStyle`
 
     &.link-primary {
         cursor: pointer;
-        color: #2026d2;
+        color: var(--color-primary);
         font-size: 1.2rem;
         position: relative;
         font-family: "Raleway",sans-serif;
         text-decoration: none;
     }
 
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-family: "Raleway",sans-serif;
+    &:hover {
+        text-decoration: underline;
+    }
   }
 `;
 
