@@ -7,6 +7,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+:root {
+  --primary-color: #2026d2;
+  --secondary-color: #61dafb;
+  --background-color-primary: #FFFFFF;
+  --background-color-secondary: #FCFDFF;
+  --button-color-primary: var(--primary-color);
+  --button-color-secondary: #61dafb;
+  --button-color-tertiary: #61dafb;
+  --button-color-destructive: red;
+  --highlight-color-primary: #282c34;
+  --highlight-color-secondary: #61dafb;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
