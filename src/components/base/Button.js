@@ -33,8 +33,8 @@ const StyledButton = styled.button`
   `}
 `;
 
-const Button = ({ type, children, isDisabled=false, tooltip='' }) => (
-  <StyledButton className={type} isDisabled={isDisabled} tooltip={tooltip}>
+const Button = ({ type, children, onClick, isDisabled=false, tooltip='' }) => (
+  <StyledButton className={type} onClick={onClick} isDisabled={isDisabled} tooltip={tooltip}>
     {children}
     {/* tooltip here can be extended to a custom component rendering either text or the component */}
     {tooltip && <span className="tooltip">{tooltip}</span>}

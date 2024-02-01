@@ -17,8 +17,12 @@ const GlobalStyles = createGlobalStyle`
     &.secondary {
       background-color: var(--secondary-color);
       color: var(--primary-color);
-      border-color: var(--primary-color);
+      border: 1px solid var(--primary-color);
       border-radius: 4px;
+    }
+
+    &.tertiary {
+        border-radius: 4px;
     }
 
     &.link-primary {
@@ -38,6 +42,24 @@ const GlobalStyles = createGlobalStyle`
     font-size: 1.2rem;
     font-family: "Raleway",sans-serif;
     &:hover {
+        text-decoration: underline;
+    }
+  }
+
+
+
+  span {
+
+    &.primary {
+        color: var(--primary-color);
+    }
+      
+    &.secondary {
+        color: black;
+    }
+      
+    &.link {
+        color: blue;
         text-decoration: underline;
     }
   }

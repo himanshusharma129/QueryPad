@@ -19,6 +19,7 @@ body {
   --button-color-destructive: red;
   --highlight-color-primary: #282c34;
   --highlight-color-secondary: #61dafb;
+  --border-color: var(--primary-color);
 }
 
 code {

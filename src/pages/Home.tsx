@@ -1,10 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
+import ActionHeader from '../components/ActionHeader.tsx';
+
+const HomeContainer = styled.div`
+
+`;
 
 const Home: React.FC = () => {
     return (
-        <div>
-            <h1>Home</h1>
-        </div>
+        <HomeContainer>
+            <ActionHeader />
+        </HomeContainer>
     );
 };
 
