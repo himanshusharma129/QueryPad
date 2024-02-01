@@ -1,16 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 import ActionHeader from '../components/ActionHeader.tsx';
+import Editor from '../components/Editor.tsx';
 
-const HomeContainer = styled.div`
+const StyledHomeContainer = styled.div`
 
-`;
+`,
+    StyledEditorContainer = styled.div``;
 
 const Home: React.FC = () => {
     return (
-        <HomeContainer>
+        <StyledHomeContainer>
             <ActionHeader />
-        </HomeContainer>
+            <StyledEditorContainer>
+                <Editor />
+            </StyledEditorContainer>
+        </StyledHomeContainer>
     );
 };
 
