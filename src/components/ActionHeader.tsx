@@ -78,7 +78,7 @@ const ActionHeader: React.FC = () => {
         <StyledActionsContainer>
             <select value={selectedOption} onChange={handleOptionChange}>
                 {connectors.map((connector) => {
-                    return (<option value={connector.value}>{connector.name}</option>);
+                    return (<option key={connector.value} value={connector.value}>{connector.name}</option>);
                 })}
             </select>
             {isEditing ? (

@@ -15,9 +15,9 @@ const NavbarContainer = styled.nav`
 const Navbar: React.FC = () => {
     return (
         <NavbarContainer>
-            <h3>QueryPads</h3>
+            <h3>QueryPad</h3>
             <a href='https://www.atlan.com'>atlan</a>
-            <Button type='secondary' isDisabled tooltip={'coming soon...'}>Login</Button>
+            <Button onClick={() => {}}type='secondary' isDisabled tooltip={'coming soon...'}>Login</Button>
         </NavbarContainer>
     );
 };
