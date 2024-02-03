@@ -28,7 +28,7 @@ const StyledButton = styled.button`
   }
 
   ${({ isDisabled }) => isDisabled && `
-    opacity: 0.5;
+    opacity: 0.8;
     cursor: not-allowed;
   `}
 `;

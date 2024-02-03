@@ -17,6 +17,11 @@ const StyledActionsContainer = styled.div`
     StyledActions = styled.div`
         display: flex;
         gap: 8px;
+    `,
+    StyledConnectionContainer = styled.div`
+        display: flex;
+        gap: 8px;
+        align-items: center;
     `;
 
 const connectors = [
@@ -76,11 +81,14 @@ const ActionHeader: React.FC = () => {
 
     return (
         <StyledActionsContainer>
-            <select value={selectedOption} onChange={handleOptionChange}>
-                {connectors.map((connector) => {
-                    return (<option key={connector.value} value={connector.value}>{connector.name}</option>);
-                })}
-            </select>
+            <StyledConnectionContainer>
+                <label htmlFor="connections"><Text type='primary'>Connections</Text></label>
+                    <select id='connections' value={selectedOption} onChange={handleOptionChange}>
+                        {connectors.map((connector) => {
+                            return (<option key={connector.value} value={connector.value}>{connector.name}</option>);
+                        })}
+                    </select>
+            </StyledConnectionContainer>
             {isEditing ? (
                 <input
                     ref={inputRef}

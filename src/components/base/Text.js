@@ -15,7 +15,7 @@ const StyledText = styled.span`
     `}
 `;
 
-const Text = ({ onClick, type, children, color='', fontSize='', weight='' }) => (
+const Text = ({ onClick=()=>{}, type, children, color='', fontSize='', weight='' }) => (
   <StyledText onClick={onClick} className={type} color={color} fontSize={fontSize} weight={weight}>
     {children}
   </StyledText>
