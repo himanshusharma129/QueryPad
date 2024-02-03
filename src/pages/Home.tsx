@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import ActionHeader from '../components/ActionHeader.tsx';
-import Editor from '../components/Editor.tsx';
+import ActionHeader from '../components/ActionHeader';
+import Editor from '../components/Editor';
 
 const StyledHomeContainer = styled.div`
 

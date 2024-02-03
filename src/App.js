@@ -2,11 +2,11 @@ import React, { Suspense, withTheme, lazy } from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import './App.css';
 import styled from 'styled-components';
-import Loader from './components/base/Loader.tsx';
+import Loader from './components/base/Loader';
 import GlobalStyles from './GlobalStyles.js';
 
-const Home = lazy(() => import("./pages/Home.tsx"));
-const Navbar = lazy(() => import("./components/Navbar.tsx"));
+const Home = lazy(() => import("./pages/Home"));
+const Navbar = lazy(() => import("./components/Navbar"));
 
 const StyledAppContainer = styled.div`
   height: 100vh;

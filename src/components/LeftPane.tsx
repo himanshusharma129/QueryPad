@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { products, customers } from '../data/rawData.js';
-import Loader from './base/Loader.tsx';
+import Loader from './base/Loader';
 
 const StyledLeftSidebar = styled.div`
   width: 100%;
