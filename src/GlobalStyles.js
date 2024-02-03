@@ -62,6 +62,10 @@ const GlobalStyles = createGlobalStyle`
         color: blue;
         text-decoration: underline;
     }
+
+    &.tertiary {
+      color: #3e4c59;
+    }
   }
 `;
 
