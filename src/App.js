@@ -2,7 +2,7 @@ import React, { Suspense, withTheme, lazy } from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import './App.css';
 import styled from 'styled-components';
-import Loader from './components/Loader.tsx';
+import Loader from './components/base/Loader.tsx';
 import GlobalStyles from './GlobalStyles.js';
 
 const Home = lazy(() => import("./pages/Home.tsx"));
