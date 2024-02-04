@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { products, customers } from '../data/rawData.js';
 import Loader from './base/Loader';
+import Text from './base/Text';
 
 const StyledLeftSidebar = styled.div`
   width: 100%;
@@ -114,7 +115,7 @@ const LeftPane: React.FC = () => {
                     <h4>{tableName}</h4>
                     <ul>
                       {tableHeaders.map((header, index) => (
-                        <li key={index}>{header}</li>
+                        <li key={index}><Text type='tertiary'>{header}</Text></li>
                       ))}
                     </ul>
                   </StyledTableInfo>

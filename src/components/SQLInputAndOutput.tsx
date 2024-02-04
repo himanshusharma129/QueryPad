@@ -2,6 +2,8 @@ import React from 'react';
 import SQLQueryEditor from './SQLQueryEditor';
 import styled from 'styled-components';
 import Text from './base/Text';
+import QueryOutput from './QueryOutput';
+import { products } from '../data/rawData';
 const StyledSQLEditorContainer = styled.div`
     padding: 16px 10px 10px 10px;
     background-color: var(--background-color-primary);
@@ -22,7 +24,7 @@ const SQLInputAndOutput: React.FC = () => {
                     <Text type='tertiary'>Tips: Click on saved query to prefill the editor</Text>
                 </StyledInformation>
             </StyledSQLEditorContainer>
-            <div>Table Data</div>
+            <QueryOutput data={products}/>
         </div>
     );
 };

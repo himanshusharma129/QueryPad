@@ -21,9 +21,9 @@ const Editor: React.FC = () => {
       <SplitterLayout
         customClassName="custom-splitter-layout"
         primaryIndex={1}
-        primaryMinSize={60}
-        secondaryInitialSize={30}
-        secondaryMinSize={20}
+        primaryMinSize={80}
+        secondaryInitialSize={15}
+        secondaryMinSize={15}
         percentage={true}
       >
         <LeftPane />
