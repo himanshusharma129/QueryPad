@@ -3,15 +3,15 @@ import styled from 'styled-components';
 
 const StyledText = styled.span`
     ${({ color }) => color && `
-        color: ${color}
+        color: ${color} !important;
     `}
 
     ${({ fontSize }) => fontSize && `
-        font-size: ${fontSize}
+        font-size: ${fontSize} !important;
     `}
 
     ${({ weight }) => weight && `
-        font-weight: ${weight}
+        font-weight: ${weight} !important;
     `}
 `;
 

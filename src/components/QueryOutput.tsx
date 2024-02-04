@@ -2,6 +2,7 @@ import React from 'react';
 import { Table, Column, AutoSizer } from 'react-virtualized';
 import styled from 'styled-components';
 import 'react-virtualized/styles.css'
+import Text from './base/Text';
 
 interface TableRow {
   [key: string]: any;
@@ -35,8 +36,26 @@ const StyledCell = styled.div`
   white-space: nowrap;
 `;
 
+const StyledEmptyOutput = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 200px;
+`;
+
 const VirtualizedDataTable: React.FC<TableProps> = ({ data }) => {
   const columns = data.length > 0 ? Object.keys(data[0]) : [];
+
+  if (data.length === 0 || columns.length === 0) {
+    return (
+      <StyledEmptyOutput>
+        <Text type='tertiary' color='rgba(0,0,0,.35)' fontSize='2em' weight='700'>
+          Run a query to see some results
+          </Text>
+        </StyledEmptyOutput>
+    );
+  }
 
   return (
     <TableContainer>

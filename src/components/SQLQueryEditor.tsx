@@ -15,7 +15,7 @@ const SQLQueryEditor: React.FC = () => {
       language="sql"
       theme="vs-light"
       options={editorOptions}
-      height="400px"
+      height="200px"
       value={'SELECT * FROM products;'}
       onChange={(value, event) => {
         console.log('### value', value, event);
