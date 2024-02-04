@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { products, customers } from '../data/rawData.js';
 import Loader from './base/Loader';
 import Text from './base/Text';
+import SavedQueries from './SavedQueries';
 
 const StyledLeftSidebar = styled.div`
   width: 100%;
@@ -126,8 +127,7 @@ const LeftPane: React.FC = () => {
         </StyledTableInfoContainer>
       </Section>
       <Section>
-        <h2>Section 2</h2>
-        <p>This is the content for the second section.</p>
+        <SavedQueries />
       </Section>
     </StyledLeftSidebar>
   );
