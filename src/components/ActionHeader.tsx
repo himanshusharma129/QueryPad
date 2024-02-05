@@ -10,7 +10,7 @@ const StyledActionsContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 60px;
+    height: 50px;
     background-color: var(--background-color-secondary);
     color: white;
     padding: 0 12px;

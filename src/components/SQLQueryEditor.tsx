@@ -23,7 +23,7 @@ const SQLQueryEditor: React.FC = () => {
       options={editorOptions}
       height="200px"
       value={activeQuery}
-      onChange={(value, event) => {
+      onChange={(value) => {
         debouncedSetQuery(value);
       }}
     />

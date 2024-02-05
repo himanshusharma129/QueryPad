@@ -6,7 +6,10 @@ import LeftPane from './LeftPane';
 import SQLInputAndOutput from './SQLInputAndOutput';
 
 const StyledApp = styled.div`
-  height: 100vh;
+  // splitter layout adds height of 100% by default, to avoid full page scroll we need to subtract the height of headers
+  .splitter-layout {
+    height: calc(100% - 110px);
+  }
 `;
 
 const RightPane = styled.div`

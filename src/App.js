@@ -12,6 +12,7 @@ const StyledAppContainer = styled.div`
   height: 100vh;
   width: 100vw;
   background-color: var(--background-color-secondary);
+  overflow: hidden;
 `;
 
 function App() {

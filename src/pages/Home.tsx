@@ -5,18 +5,15 @@ import Editor from '../components/Editor';
 import { SqlEditorProvider } from '../context/SQLEditorContext';
 
 const StyledHomeContainer = styled.div`
-
-`,
-    StyledEditorContainer = styled.div``;
+    overflow: hidden;
+`;
 
 const Home: React.FC = () => {
     return (
         <StyledHomeContainer>
             <SqlEditorProvider>
                 <ActionHeader />
-                <StyledEditorContainer>
-                    <Editor />
-                </StyledEditorContainer>
+                <Editor />
             </SqlEditorProvider>
         </StyledHomeContainer>
     );

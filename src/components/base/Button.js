@@ -1,4 +1,3 @@
-// Button.js
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
@@ -16,6 +15,7 @@ const StyledButton = styled.button`
     border-radius: 3px;
     opacity: 0;
     transition: opacity 0.3s ease;
+    z-index: 1;
   }
 
   &:hover {
