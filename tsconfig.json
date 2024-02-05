@@ -19,9 +19,9 @@
       "baseUrl": ".",
       "paths": {
         "*": ["src/*"],
-        "react-virtualized": ["src/types/react-virtualized.d.ts"]
+        "react-virtualized": ["types/react-virtualized.d.ts"]
       },
-      "types": ["react", "react-dom", "node", "monaco-editor", "react-virtualized"]
+      "types": ["react", "react-dom", "node", "monaco-editor"]
     },
     "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.js", "src/**/*.jsx", "src/**/*.d.ts"],
     "exclude": ["node_modules", "build"]
