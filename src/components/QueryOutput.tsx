@@ -3,6 +3,7 @@ import { Table, Column, AutoSizer } from 'react-virtualized';
 import styled from 'styled-components';
 import 'react-virtualized/styles.css'
 import Text from './base/Text';
+import Button from './base/Button';
 import { ITableProps } from '../types/TableTypes';
 
 const TableContainer = styled.div`
@@ -37,6 +38,13 @@ const StyledEmptyOutput = styled.div`
   padding: 200px;
 `;
 
+const StyledMetaContainer = styled.div`
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 const VirtualizedDataTable: React.FC<ITableProps> = ({ data }) => {
   const columns = data.length > 0 ? Object.keys(data[0]) : [];
 
@@ -45,13 +53,31 @@ const VirtualizedDataTable: React.FC<ITableProps> = ({ data }) => {
       <StyledEmptyOutput>
         <Text type='tertiary' color='rgba(0,0,0,.35)' fontSize='2em' weight='700'>
           Run a query to see some results
-          </Text>
-        </StyledEmptyOutput>
+        </Text>
+      </StyledEmptyOutput>
     );
   }
 
+  const downloadDataAsCSV = () => {
+    const csvData = [columns.join(',')].concat(
+      data.map((row) => Object.values(row).join(','))
+    ).join('\n');
+    const blob = new Blob([csvData], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'data.csv';
+    link.click();
+  };
+
   return (
     <TableContainer>
+      <StyledMetaContainer>
+        <Text type='tertiary'>
+          <Text type='tertiary' fontStyle='italic'>{`Fetched ${data.length} rows in 0.01sec`}</Text>
+        </Text>
+        <Button type='tertiary' onClick={downloadDataAsCSV}>Export</Button>
+      </StyledMetaContainer>
       <AutoSizer>
         {({ width, height }: any) => (
           <Table

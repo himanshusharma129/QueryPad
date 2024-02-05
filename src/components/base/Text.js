@@ -13,10 +13,14 @@ const StyledText = styled.span`
     ${({ weight }) => weight && `
         font-weight: ${weight} !important;
     `}
+
+    ${({ fontStyle }) => fontStyle && `
+        font-style: ${fontStyle} !important;
+    `}
 `;
 
-const Text = ({ onClick=()=>{}, type='secondary', children, color='', fontSize='', weight='' }) => (
-  <StyledText onClick={onClick} className={type} color={color} fontSize={fontSize} weight={weight}>
+const Text = ({ onClick=()=>{}, type='secondary', children, color='', fontSize='', weight='', fontStyle=''}) => (
+  <StyledText onClick={onClick} className={type} color={color} fontSize={fontSize} weight={weight} fontStyle={fontStyle}>
     {children}
   </StyledText>
 );
