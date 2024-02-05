@@ -1,10 +1,13 @@
 import React, { createContext, useState, useContext, ReactNode } from 'react';
+import { ITable } from 'types/TableTypes';
 
 interface SqlEditorContextProps {
     savedQueries: string[];
     activeQuery: string;
     addSavedQuery: () => void;
     setNewActiveQuery: (query: string) => void;
+    outputData: ITable;
+    setNewOutputData: (data: ITable) => void;
 }
 
 const SqlEditorContext = createContext<SqlEditorContextProps | undefined>(undefined);
@@ -14,12 +17,12 @@ interface SqlEditorProviderProps {
 }
 
 const SqlEditorProvider: React.FC<SqlEditorProviderProps> = ({ children }) => {
-    const defaultQueries = ['SELECT * FROM users', 'SELECT * FROM products', 'SELECT * FROM orders',
-    'SELECT * FROM users'
+    const defaultQueries = ['SELECT * FROM customers', 'SELECT * FROM products', 'SELECT count FROM products where unitPrice < 50'
     ]; //@TODO find a way to form this using table data
 
     const [savedQueries, setSavedQueries] = useState<string[]>(defaultQueries);
     const [activeQuery, setActiveQuery] = useState<string>(savedQueries[0]);
+    const [outputData, setOutputData] = useState<ITable>([]); //@TODO find a way to form this using table data
 
     const addSavedQuery = () => {
         setSavedQueries([...savedQueries, activeQuery]);
@@ -29,8 +32,12 @@ const SqlEditorProvider: React.FC<SqlEditorProviderProps> = ({ children }) => {
         setActiveQuery(query);
     };
 
+    const setNewOutputData = (data: ITable) => {
+        setOutputData(data);
+    }
+
     return (
-        <SqlEditorContext.Provider value={{ savedQueries, activeQuery, addSavedQuery, setNewActiveQuery }}>
+        <SqlEditorContext.Provider value={{ savedQueries, activeQuery, addSavedQuery, setNewActiveQuery, outputData, setNewOutputData }}>
         {children}
         </SqlEditorContext.Provider>
     );

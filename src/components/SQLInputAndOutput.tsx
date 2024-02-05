@@ -3,7 +3,8 @@ import SQLQueryEditor from './SQLQueryEditor';
 import styled from 'styled-components';
 import Text from './base/Text';
 import QueryOutput from './QueryOutput';
-import { products } from '../data/rawData';
+import { useSqlEditor } from '../context/SQLEditorContext';
+import { ITable } from '../types/TableTypes';
 
 const StyledSQLEditorContainer = styled.div`
     padding: 16px 10px 10px 10px;
@@ -25,6 +26,9 @@ const StyledWrapper = styled.div`
 `;
 
 const SQLInputAndOutput: React.FC = () => {
+    const { outputData } = useSqlEditor();
+    const mockedData: ITable = outputData;
+
     return (
         <StyledWrapper>
             <StyledSQLEditorContainer>
@@ -33,7 +37,7 @@ const SQLInputAndOutput: React.FC = () => {
                     <Text type='tertiary'>Tips: Click on saved query to prefill the editor</Text>
                 </StyledInformation>
             </StyledSQLEditorContainer>
-            <QueryOutput data={products} />            
+            <QueryOutput data={mockedData} />            
         </StyledWrapper>
     );
 };

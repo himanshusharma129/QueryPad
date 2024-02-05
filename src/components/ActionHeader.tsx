@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Button from './base/Button';
 import Text from './base/Text';
 import { useSqlEditor } from '../context/SQLEditorContext';
+import { getMockedTableData } from '../utils/Utils';
+import { ITable } from '../types/TableTypes';
 
 const StyledActionsContainer = styled.div`
     display: flex;
@@ -29,19 +31,11 @@ const connectors = [
     {
         name: 'Github Connector 1',
         value: 'git1',
-    },
-    {
-        name: 'Github Connector 2',
-        value: 'git2',
-    },
-    {
-        name: 'Github Connector 3',
-        value: 'git3',
-    },
+    }
 ];
 
 const ActionHeader: React.FC = () => {
-    const { addSavedQuery } = useSqlEditor();
+    const { addSavedQuery, activeQuery, setNewOutputData } = useSqlEditor();
     const [isEditing, setIsEditing] = useState(false);
     const [itemName, setItemName] = useState('New Query');
     const [selectedOption, setSelectedOption] = useState('');
@@ -51,6 +45,11 @@ const ActionHeader: React.FC = () => {
         console.log('edit clicked');
         setIsEditing(true);
     };
+
+    const handleRunClick = () => {
+        const data: ITable = getMockedTableData(activeQuery);
+        setNewOutputData(data);
+    }
 
     const handleSaveClick = useCallback(() => {
         setIsEditing(false);
@@ -104,9 +103,8 @@ const ActionHeader: React.FC = () => {
                 <Text type='primary' onClick={handleEditClick}>{itemName || 'Click to enter name'}</Text>
             )}
             <StyledActions>
-                <Button type='primary' onClick={handleSaveClick}>Run</Button>
+                <Button type='primary' onClick={handleRunClick}>Run</Button>
                 <Button type='secondary' onClick={handleSaveClick}>Save</Button>
-                <Button type='tertiary' onClick={handleSaveClick}>Share</Button>
             </StyledActions>
         </StyledActionsContainer>
     );
