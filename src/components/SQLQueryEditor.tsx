@@ -14,7 +14,7 @@ const SQLQueryEditor: React.FC = () => {
     },
   };
 
-  const debouncedSetQuery = debounce((query: string) => setNewActiveQuery(activeQuery), 300);
+  const debouncedSetQuery = debounce((query: string) => setNewActiveQuery(query), 300);
 
   return (
     <MonacoEditor

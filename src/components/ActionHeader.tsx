@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import styled from 'styled-components';
 import Button from './base/Button';
 import Text from './base/Text';
+import { useSqlEditor } from '../context/SQLEditorContext';
 
 const StyledActionsContainer = styled.div`
     display: flex;
@@ -40,6 +41,7 @@ const connectors = [
 ];
 
 const ActionHeader: React.FC = () => {
+    const { addSavedQuery } = useSqlEditor();
     const [isEditing, setIsEditing] = useState(false);
     const [itemName, setItemName] = useState('New Query');
     const [selectedOption, setSelectedOption] = useState('');
@@ -52,8 +54,9 @@ const ActionHeader: React.FC = () => {
 
     const handleSaveClick = useCallback(() => {
         setIsEditing(false);
-        // do save logic here
-    }, [setIsEditing]);
+        addSavedQuery();
+
+    }, [setIsEditing, addSavedQuery]);
 
     const handleOptionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedOption(e.target.value);

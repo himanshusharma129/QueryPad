@@ -3,7 +3,7 @@ import React, { createContext, useState, useContext, ReactNode } from 'react';
 interface SqlEditorContextProps {
     savedQueries: string[];
     activeQuery: string;
-    addSavedQuery: (query: string) => void;
+    addSavedQuery: () => void;
     setNewActiveQuery: (query: string) => void;
 }
 
@@ -21,8 +21,8 @@ const SqlEditorProvider: React.FC<SqlEditorProviderProps> = ({ children }) => {
     const [savedQueries, setSavedQueries] = useState<string[]>(defaultQueries);
     const [activeQuery, setActiveQuery] = useState<string>(savedQueries[0]);
 
-    const addSavedQuery = (query: string) => {
-        setSavedQueries([...savedQueries, query]);
+    const addSavedQuery = () => {
+        setSavedQueries([...savedQueries, activeQuery]);
     };
 
     const setNewActiveQuery = (query: string) => {
