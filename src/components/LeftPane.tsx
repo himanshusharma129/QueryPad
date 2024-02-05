@@ -68,6 +68,10 @@ const StyledInputContainer = styled.div`
   padding-top: 10px;
 `;
 
+const StyledEmptyMessage = styled.div`
+  margin-top: 16px;
+`;
+
 const LeftPane: React.FC = () => {
   const [tables, setTables] = React.useState<ITable>([]);
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -102,7 +106,7 @@ const LeftPane: React.FC = () => {
             <Loader />
           ) : (
             filteredTables.length === 0 ? (
-              <p>No tables found</p>
+              <StyledEmptyMessage><Text type='tertiary'>No tables found</Text></StyledEmptyMessage>
             ) : (
               filteredTables.map((table, index) => {
                 const tableName = Object.keys(table)[0];

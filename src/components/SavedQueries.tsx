@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Text from './base/Text';
 import { useSqlEditor } from '../context/SQLEditorContext';
@@ -26,22 +26,51 @@ const QueryListItem = styled.li`
   }
 `;
 
+const StyledInput = styled.input`
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+
+  &:focus {
+    border-color: var(--primary-color);
+  }
+`;
+
+const StyledEmptyMessage = styled.div`
+  margin-top: 16px;
+`;
+
 const SavedQueries: React.FC = () => {
   const { savedQueries, setNewActiveQuery } = useSqlEditor();
-  const sqlQueries: string[] = savedQueries;
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleQueryClick = (e: React.MouseEvent<HTMLLIElement>) => {
     setNewActiveQuery(e.currentTarget.textContent || '');
   }
 
+  const filteredQueries = savedQueries.filter(query =>
+    query.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <SavedQueriesContainer>
       <h4>Saved Queries</h4>
-      {sqlQueries.length === 0 ? (
-        <Text type='tertiary'>No queries available</Text>
+      <StyledInput
+        type="text"
+        placeholder="Search queries"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+      {filteredQueries.length === 0 ? (
+        <StyledEmptyMessage><Text type='tertiary'>No queries found</Text></StyledEmptyMessage>
       ) : (
         <QueryList>
-          {sqlQueries.map((query: string, index: number) => (
+          {filteredQueries.map((query: string, index: number) => (
             <QueryListItem onClick={(e) => handleQueryClick(e)} key={index}>{query}</QueryListItem>
           ))}
         </QueryList>
