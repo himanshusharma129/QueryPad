@@ -4,6 +4,7 @@ import { products, customers } from '../data/rawData.js';
 import Loader from './base/Loader';
 import Text from './base/Text';
 import SavedQueries from './SavedQueries';
+import { ITable } from '../types/TableTypes.js';
 
 const StyledLeftSidebar = styled.div`
   width: 100%;
@@ -67,12 +68,8 @@ const StyledInputContainer = styled.div`
   padding-top: 10px;
 `;
 
-interface TableItem {
-  [key: string]: string[];
-}
-
 const LeftPane: React.FC = () => {
-  const [tables, setTables] = React.useState<Array<TableItem>>([]);
+  const [tables, setTables] = React.useState<ITable>([]);
   const [searchTerm, setSearchTerm] = React.useState('');
 
   useEffect(() => {
@@ -91,7 +88,7 @@ const LeftPane: React.FC = () => {
     const tableName = Object.keys(table)[0];
     const tableHeaders = table[tableName];
 
-    return tableHeaders.some((header) => header.toLowerCase().includes(searchTerm.toLowerCase()));
+    return tableHeaders.some((header: string) => header.toLowerCase().includes(searchTerm.toLowerCase()));
   });
 
   return (
@@ -115,7 +112,7 @@ const LeftPane: React.FC = () => {
                   <StyledTableInfo key={index}>
                     <h4>{tableName}</h4>
                     <ul>
-                      {tableHeaders.map((header, index) => (
+                      {tableHeaders.map((header: string, index: number) => (
                         <li key={index}><Text type='tertiary'>{header}</Text></li>
                       ))}
                     </ul>

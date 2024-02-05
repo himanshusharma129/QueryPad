@@ -3,14 +3,7 @@ import { Table, Column, AutoSizer } from 'react-virtualized';
 import styled from 'styled-components';
 import 'react-virtualized/styles.css'
 import Text from './base/Text';
-
-interface TableRow {
-  [key: string]: any;
-}
-
-interface TableProps {
-  data: TableRow[];
-}
+import { ITableProps } from '../types/TableTypes';
 
 const TableContainer = styled.div`
   width: 100%;
@@ -44,7 +37,7 @@ const StyledEmptyOutput = styled.div`
   padding: 200px;
 `;
 
-const VirtualizedDataTable: React.FC<TableProps> = ({ data }) => {
+const VirtualizedDataTable: React.FC<ITableProps> = ({ data }) => {
   const columns = data.length > 0 ? Object.keys(data[0]) : [];
 
   if (data.length === 0 || columns.length === 0) {
