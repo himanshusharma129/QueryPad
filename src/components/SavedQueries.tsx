@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Text from './base/Text';
+import { useSqlEditor } from '../context/SQLEditorContext';
 
 const SavedQueriesContainer = styled.div`
 
@@ -19,17 +20,19 @@ const QueryListItem = styled.li`
   border-radius: 4px;
   font-size: 14px;
   color: #333;
+  cursor: pointer;
+  &:hover {
+    background-color: #e0e0e0;
+  }
 `;
 
 const SavedQueries: React.FC = () => {
-    const sqlQueries: string[] = ['SELECT * FROM users', 'SELECT * FROM products', 'SELECT * FROM orders',
-    'SELECT * FROM users', 'SELECT * FROM products', 'SELECT * FROM orders',
-    'SELECT * FROM users', 'SELECT * FROM products', 'SELECT * FROM orders',
-    'SELECT * FROM users', 'SELECT * FROM products', 'SELECT * FROM orders',
-    'SELECT * FROM users', 'SELECT * FROM products', 'SELECT * FROM orders',
-    'SELECT * FROM users', 'SELECT * FROM products', 'SELECT * FROM orders',
-    'SELECT * FROM users', 'SELECT * FROM products', 'SELECT * FROM orders'
-];
+  const { savedQueries, setNewActiveQuery } = useSqlEditor();
+  const sqlQueries: string[] = savedQueries;
+
+  const handleQueryClick = (e: React.MouseEvent<HTMLLIElement>) => {
+    setNewActiveQuery(e.currentTarget.textContent || '');
+  }
 
   return (
     <SavedQueriesContainer>
@@ -39,7 +42,7 @@ const SavedQueries: React.FC = () => {
       ) : (
         <QueryList>
           {sqlQueries.map((query: string, index: number) => (
-            <QueryListItem key={index}>{query}</QueryListItem>
+            <QueryListItem onClick={(e) => handleQueryClick(e)} key={index}>{query}</QueryListItem>
           ))}
         </QueryList>
       )}
