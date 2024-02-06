@@ -79,6 +79,7 @@ const StyledEmptyMessage = styled.div`
 
 const StyledHeading = styled.h4`
   margin-block-end: 0;
+  color: var(--primary-font-color);
 `;
 
 const LeftPane: React.FC = () => {
@@ -137,10 +138,10 @@ const LeftPane: React.FC = () => {
 
                 return (
                   <StyledTableInfo key={index}>
-                    <h4>{tableName}</h4>
+                    <StyledHeading>{tableName}</StyledHeading>
                     <ul>
                       {tableHeaders.map((header: string, index: number) => (
-                        <li key={index}><Text type='tertiary'>{header}</Text></li>
+                        <li key={index}><Text type='secondary'>{header}</Text></li>
                       ))}
                     </ul>
                   </StyledTableInfo>

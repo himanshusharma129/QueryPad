@@ -12,8 +12,8 @@ const TableContainer = styled.div`
 `;
 
 const StyledHeaderCell = styled.div`
-  background-color: var(--primary-color);
-  color: #ffffff;
+  background-color: var(--brand-color);
+  color: white;
   padding: 8px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -28,6 +28,8 @@ const StyledCell = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  background-color: var(--background-color-secondary);
+  color: var(--primary-font-color);
 `;
 
 const StyledEmptyOutput = styled.div`

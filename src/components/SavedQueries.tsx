@@ -15,15 +15,15 @@ const QueryList = styled.ul`
 const QueryListItem = styled.li`
   margin-bottom: 8px;
   padding: 10px;
-  background-color: #f9f9f9;
+  background-color: var(--background-color-primary);
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 14px;
-  color: #333;
+  color: var(--primary-font-color);
   cursor: pointer;
   word-wrap: break-word;
   &:hover {
-    background-color: #e0e0e0;
+    background-color: var(--background-highlight-color);
   }
 `;
 
@@ -58,6 +58,7 @@ const StyledEmptyMessage = styled.div`
 
 const StyledHeading = styled.h4`
   margin-block-end: 0;
+  color: var(--primary-font-color);
 `;
 
 const SavedQueries: React.FC = () => {

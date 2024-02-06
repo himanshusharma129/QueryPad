@@ -51,11 +51,11 @@ const GlobalStyles = createGlobalStyle`
   span {
 
     &.primary {
-        color: var(--primary-color);
+        color: var(--primary-font-color);
     }
       
     &.secondary {
-        color: black;
+        color: var(--secondary-font-color);
     }
       
     &.link {
@@ -64,7 +64,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     &.tertiary {
-      color: #3e4c59;
+      color: var(--tertiary-font-color);
     }
   }
 
