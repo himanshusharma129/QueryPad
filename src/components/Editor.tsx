@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import SplitterLayout from 'react-splitter-layout';
 import 'react-splitter-layout/lib/index.css';
 import LeftPane from './LeftPane';
 import SQLInputAndOutput from './SQLInputAndOutput';
+import { useSqlEditor } from '../context/SQLEditorContext';
 
 const StyledApp = styled.div`
   // splitter layout adds height of 100% by default, to avoid full page scroll we need to subtract the height of headers
@@ -19,19 +20,7 @@ const RightPane = styled.div`
 `;
 
 const Editor: React.FC = () => {
-  const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  const { isMobile } = useSqlEditor();
 
   return (
     <StyledApp>
@@ -54,9 +43,9 @@ const Editor: React.FC = () => {
           <SplitterLayout
             customClassName="custom-splitter-layout"
             primaryIndex={1}
-            primaryMinSize={80}
-            secondaryInitialSize={15}
-            secondaryMinSize={15}
+            primaryMinSize={60}
+            secondaryInitialSize={22}
+            secondaryMinSize={22}
             percentage={true}
           >
             <LeftPane />

@@ -21,14 +21,15 @@ const StyledActionsContainer = styled.div`
         display: flex;
         gap: 8px;
     `,
-    StyledConnectionContainer = styled.div`
+    StyledConnectionContainer = styled.div<{ isMobile: boolean }>`
         display: flex;
-        gap: 8px;
-        align-items: center;
+        ${({ isMobile }) => (isMobile ?
+            'flex-direction: column; align-items: flex-start; gap: 2px;' :
+            'align-items: center; gap: 8px;')}
     `;
 
 const ActionHeader: React.FC = () => {
-    const { addSavedQuery, activeQuery, setNewOutputData } = useSqlEditor();
+    const { addSavedQuery, activeQuery, setNewOutputData, isMobile } = useSqlEditor();
     const [isEditing, setIsEditing] = useState(false);
     const [itemName, setItemName] = useState('New Query');
     const [selectedOption, setSelectedOption] = useState('');
@@ -52,6 +53,7 @@ const ActionHeader: React.FC = () => {
 
     const handleOptionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedOption(e.target.value);
+        // Update the data from the selected connector
     };
 
     const handleClickOutside = useCallback((e: MouseEvent) => {
@@ -76,8 +78,8 @@ const ActionHeader: React.FC = () => {
 
     return (
         <StyledActionsContainer>
-            <StyledConnectionContainer>
-                <label htmlFor="connections"><Text type='primary'>Connections</Text></label>
+            <StyledConnectionContainer isMobile={isMobile}>
+                <label htmlFor="connections"><Text type='primary'>Source</Text></label>
                     <select id='connections' value={selectedOption} onChange={handleOptionChange}>
                         {connectors.map((connector) => {
                             return (<option key={connector.value} value={connector.value}>{connector.name}</option>);
