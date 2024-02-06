@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { products, customers } from '../data/rawData.js';
 import Loader from './base/Loader';
@@ -6,19 +6,24 @@ import Text from './base/Text';
 import SavedQueries from './SavedQueries';
 import { ITable } from '../types/TableTypes.js';
 
-const StyledLeftSidebar = styled.div`
+const StyledLeftSidebar = styled.div<{ isMobile?: boolean }>`
   width: 100%;
   height: 100%;
-  background-color: var(background-color-secondary);
+  background-color: var(--background-color-secondary);
   display: flex;
-  flex-direction: column;
+  flex-direction: ${props => props.isMobile ? 'row' : 'column'};
 `;
 
-const Section = styled.div`
+const Section = styled.div<{ isMobile?: boolean }>`
   flex: 1;
   padding: 0px 20px 10px 20px;
   overflow: auto;
-  border-bottom: 1px solid var(--border-color);
+  
+  ${({ isMobile }) => isMobile ? `
+    border-right: 1px solid var(--border-color);;
+  ` : `
+    border-bottom: 1px solid var(--border-color);
+  `}
 
   &:last-child {
     border-bottom: none;
@@ -73,8 +78,21 @@ const StyledEmptyMessage = styled.div`
 `;
 
 const LeftPane: React.FC = () => {
-  const [tables, setTables] = React.useState<ITable>([]);
-  const [searchTerm, setSearchTerm] = React.useState('');
+  const [tables, setTables] = useState<ITable>([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const productsTableKeys = Object.keys(products[0]);
@@ -96,8 +114,8 @@ const LeftPane: React.FC = () => {
   });
 
   return (
-    <StyledLeftSidebar>
-      <Section>
+    <StyledLeftSidebar isMobile={isMobile}>
+      <Section isMobile={isMobile}>
         <StyledInputContainer>
           <StyledSearchInput type="text" value={searchTerm} onChange={handleSearch} placeholder="Search attributes" />
         </StyledInputContainer>
@@ -127,7 +145,7 @@ const LeftPane: React.FC = () => {
           )}
         </StyledTableInfoContainer>
       </Section>
-      <Section>
+      <Section isMobile={isMobile}>
         <SavedQueries />
       </Section>
     </StyledLeftSidebar>

@@ -67,6 +67,14 @@ const GlobalStyles = createGlobalStyle`
       color: #3e4c59;
     }
   }
+
+  .ReactVirtualized__Table__rowColumn {
+    margin-right: 0 !important;
+  }
+
+  .ReactVirtualized__Table__headerColumn {
+    margin-right: 0 !important;
+  }
 `;
 
 export default GlobalStyles;
