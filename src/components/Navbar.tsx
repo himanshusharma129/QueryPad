@@ -17,7 +17,7 @@ const Navbar: React.FC = () => {
         <NavbarContainer>
             <h3>QueryPad</h3>
             <a href='https://www.atlan.com'>atlan</a>
-            <Button onClick={() => {}}type='secondary' isDisabled tooltip={'coming soon...'}>Login</Button>
+            <Button onClick={() => {}}type='secondary' $isDisabled tooltip={'coming soon...'}>Login</Button>
         </NavbarContainer>
     );
 };

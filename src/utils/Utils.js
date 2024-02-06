@@ -9,6 +9,11 @@ export function debounce (func, timeout = 300){
     };
 }
 
+/**
+ * A mock function to return table data stored locally, this tries to mimic sql run results
+ * @param {string} query 
+ * @returns table data of type ITable
+ */
 export function getMockedTableData (query) {
     if (query.includes('products')) {
       return products;
@@ -18,4 +23,17 @@ export function getMockedTableData (query) {
     }
 
     return [];
+}
+
+/**
+ * A mock function that returns an array of data connectors
+ * @returns {Array} - Array of data connectors
+ 
+ */
+export function getConnectors () {
+
+  return [{
+    name: 'MockData Github',
+    value: 'git1',
+  }];
 }

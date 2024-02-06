@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Button from './base/Button';
 import Text from './base/Text';
 import { useSqlEditor } from '../context/SQLEditorContext';
-import { getMockedTableData } from '../utils/Utils';
+import { getMockedTableData, getConnectors } from '../utils/Utils';
 import { ITable } from '../types/TableTypes';
 
 const StyledActionsContainer = styled.div`
@@ -27,19 +27,13 @@ const StyledActionsContainer = styled.div`
         align-items: center;
     `;
 
-const connectors = [
-    {
-        name: 'Github Connector 1',
-        value: 'git1',
-    }
-];
-
 const ActionHeader: React.FC = () => {
     const { addSavedQuery, activeQuery, setNewOutputData } = useSqlEditor();
     const [isEditing, setIsEditing] = useState(false);
     const [itemName, setItemName] = useState('New Query');
     const [selectedOption, setSelectedOption] = useState('');
     const inputRef = useRef<HTMLInputElement>(null);
+    const connectors = getConnectors();
 
     const handleEditClick = () => {
         console.log('edit clicked');

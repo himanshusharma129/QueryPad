@@ -21,6 +21,7 @@ const QueryListItem = styled.li`
   font-size: 14px;
   color: #333;
   cursor: pointer;
+  word-wrap: break-word;
   &:hover {
     background-color: #e0e0e0;
   }

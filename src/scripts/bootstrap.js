@@ -49,7 +49,6 @@ async function runBootstrap() {
     const tableInfo = await extractTableInfo(localFileName);
     const tableName = csvFile.split('.')[0];
     
-    // add log here to add more tables data
     const jsCode = `
 export const ${tableName} = ${JSON.stringify(tableInfo, null, 2)}; 
     `;
