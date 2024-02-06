@@ -1,6 +1,15 @@
+import React from 'react';
 import styled from 'styled-components';
 
-const StyledButton = styled.button`
+type ButtonProps = {
+  type: string;
+  children: React.ReactNode;
+  onClick: () => void;
+  $isDisabled?: boolean;
+  tooltip?: string;
+};
+
+const StyledButton = styled.button<{ tooltip?: string }>`
   position: relative;
 
   .tooltip {
@@ -19,7 +28,7 @@ const StyledButton = styled.button`
   }
 
   &:hover {
-    ${({ tooltip }) => tooltip && `
+    ${({ tooltip }: { tooltip?: string }) => tooltip && `
       .tooltip {
         visibility: visible;
         opacity: 1;
@@ -27,16 +36,15 @@ const StyledButton = styled.button`
     `}
   }
 
-  ${({ $isDisabled }) => $isDisabled && `
+  ${({ disabled }: { disabled?: boolean }) => disabled && `
     opacity: 0.8;
     cursor: not-allowed;
   `}
 `;
 
-const Button = ({ type, children, onClick, $isDisabled=false, tooltip='' }) => (
-  <StyledButton className={type} onClick={onClick} $isDisabled={$isDisabled} tooltip={tooltip}>
+const Button = ({ type, children, onClick, $isDisabled = false, tooltip }: ButtonProps) => (
+  <StyledButton className={type} onClick={onClick} disabled={$isDisabled} tooltip={tooltip}>
     {children}
-    {/* tooltip here can be extended to a custom component rendering either text or the component */}
     {tooltip && <span className="tooltip">{tooltip}</span>}
   </StyledButton>
 );
