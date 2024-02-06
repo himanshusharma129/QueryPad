@@ -8,7 +8,7 @@ import { ITableProps } from '../types/TableTypes';
 
 const TableContainer = styled.div`
   width: 100%;
-  height: 600px;
+  flex: 1;
 `;
 
 const StyledHeaderCell = styled.div`

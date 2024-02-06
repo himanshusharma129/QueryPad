@@ -15,6 +15,7 @@ const StyledApp = styled.div`
 const RightPane = styled.div`
   overflow: auto;
   padding: 20px;
+  height: 100%;
 `;
 
 const Editor: React.FC = () => {
