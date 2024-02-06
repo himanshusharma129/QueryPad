@@ -77,6 +77,10 @@ const StyledEmptyMessage = styled.div`
   margin-top: 16px;
 `;
 
+const StyledHeading = styled.h4`
+  margin-block-end: 0;
+`;
+
 const LeftPane: React.FC = () => {
   const [tables, setTables] = useState<ITable>([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -116,6 +120,7 @@ const LeftPane: React.FC = () => {
   return (
     <StyledLeftSidebar isMobile={isMobile}>
       <Section isMobile={isMobile}>
+        <StyledHeading>Available Schemas</StyledHeading>
         <StyledInputContainer>
           <StyledSearchInput type="text" value={searchTerm} onChange={handleSearch} placeholder="Search attributes" />
         </StyledInputContainer>

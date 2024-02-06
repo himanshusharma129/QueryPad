@@ -4,7 +4,7 @@ import { useSqlEditor } from '../context/SQLEditorContext';
 import { debounce } from '../utils/Utils';
 import styled from 'styled-components';
 
-const StyledInput = styled.textarea`
+const StyledInput = styled.textarea<{ isMobile: boolean}>`
   padding: 10px;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
@@ -13,7 +13,7 @@ const StyledInput = styled.textarea`
   transition: border-color 0.3s ease;
   width: 100%;
   box-sizing: border-box;
-  height: 200px;
+  height: ${(props) => props.isMobile ? '100px' : '200px'};
   resize: none;
 
   &:focus {
@@ -24,7 +24,7 @@ const StyledInput = styled.textarea`
 
 
 const SQLQueryEditor: React.FC = () => {
-  const { activeQuery, setNewActiveQuery } = useSqlEditor();
+  const { activeQuery, setNewActiveQuery, isMobile } = useSqlEditor();
 
   // const editorOptions: monaco.editor.IEditorOptions = {
   //   selectOnLineNumbers: true,
@@ -37,7 +37,7 @@ const SQLQueryEditor: React.FC = () => {
   const debouncedSetQuery = debounce((query: string) => setNewActiveQuery(query), 50);
 
   return (
-    <StyledInput aria-label='sql-editor' value={activeQuery} onChange={(e) => debouncedSetQuery(e.target.value)} />
+    <StyledInput aria-label='sql-editor' isMobile={isMobile} value={activeQuery} onChange={(e) => debouncedSetQuery(e.target.value)} />
   );
 
   // commented Monaco and used simple text editor to boost performance

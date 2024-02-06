@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 import { ITable } from 'types/TableTypes';
 
 interface SqlEditorContextProps {
@@ -8,6 +8,7 @@ interface SqlEditorContextProps {
     setNewActiveQuery: (query: string) => void;
     outputData: ITable;
     setNewOutputData: (data: ITable) => void;
+    isMobile: boolean;
 }
 
 const SqlEditorContext = createContext<SqlEditorContextProps | undefined>(undefined);
@@ -23,6 +24,19 @@ const SqlEditorProvider: React.FC<SqlEditorProviderProps> = ({ children }) => {
     const [savedQueries, setSavedQueries] = useState<string[]>(defaultQueries);
     const [activeQuery, setActiveQuery] = useState<string>(savedQueries[0]);
     const [outputData, setOutputData] = useState<ITable>([]); //@TODO find a way to form this using table data
+    const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
+
+    useEffect(() => {
+      const handleResize = () => {
+        setIsMobile(window.innerWidth < 768);
+      };
+  
+      window.addEventListener('resize', handleResize);
+  
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
 
     const addSavedQuery = () => {
         setSavedQueries([...savedQueries, activeQuery]);
@@ -37,7 +51,7 @@ const SqlEditorProvider: React.FC<SqlEditorProviderProps> = ({ children }) => {
     }
 
     return (
-        <SqlEditorContext.Provider value={{ savedQueries, activeQuery, addSavedQuery, setNewActiveQuery, outputData, setNewOutputData }}>
+        <SqlEditorContext.Provider value={{ savedQueries, activeQuery, addSavedQuery, setNewActiveQuery, outputData, setNewOutputData, isMobile }}>
         {children}
         </SqlEditorContext.Provider>
     );

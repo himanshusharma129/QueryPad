@@ -23,7 +23,7 @@ const StyledWrapper = styled.div`
     flex-direction: column;
     height: 100%;
     gap: 12px;
-    min-width: 900px;
+    min-width: 600px;
 `;
 
 const SQLInputAndOutput: React.FC = () => {

@@ -42,8 +42,22 @@ const StyledInput = styled.input`
   }
 `;
 
+const StyledInputContainer = styled.div`  
+  position: sticky;
+  top: 0;
+  background-color: var(--background-color-secondary);
+  z-index: 1;
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 10px;
+`;
+
 const StyledEmptyMessage = styled.div`
   margin-top: 16px;
+`;
+
+const StyledHeading = styled.h4`
+  margin-block-end: 0;
 `;
 
 const SavedQueries: React.FC = () => {
@@ -60,13 +74,15 @@ const SavedQueries: React.FC = () => {
 
   return (
     <SavedQueriesContainer>
-      <h4>Saved Queries</h4>
-      <StyledInput
-        type="text"
-        placeholder="Search queries"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
+      <StyledHeading>Saved Queries</StyledHeading>
+      <StyledInputContainer>
+        <StyledInput
+          type="text"
+          placeholder="Search queries"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </StyledInputContainer>
       {filteredQueries.length === 0 ? (
         <StyledEmptyMessage><Text type='tertiary'>No queries found</Text></StyledEmptyMessage>
       ) : (
