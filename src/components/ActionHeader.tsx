@@ -36,7 +36,6 @@ const ActionHeader: React.FC = () => {
     const connectors = getConnectors();
 
     const handleEditClick = () => {
-        console.log('edit clicked');
         setIsEditing(true);
     };
 
