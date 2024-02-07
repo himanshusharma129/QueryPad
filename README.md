@@ -1,51 +1,51 @@
 
-# 🗒️ QueryPads by Atlan
+# 🗒️ QueryPad by Atlan
 <strong> Try it now: https://query-pad.vercel.app/</strong>
 <br>
 
 ## Introduction
 
-This is a mock application bulid as an interview task for Atlan. It mocks the experience of running SQL queries, viewing the data, saving the queries and searching the available table attributes.
+QueryPad is a mock application built as part of an interview task for Atlan. It simulates the experience of running SQL queries, viewing data, saving queries, and searching table attributes.
 
 ##Problem Statement Outline
->  Create, design and implement a web-based application capable of running SQL queries and displaying the results of said query. The application must include a space which accepts SQL queries in the form of user inputs, then runs the given query, and displays the result within the application..
+>  The task involved creating, designing, and implementing a web-based application capable of running SQL queries and displaying their results. The application needed to include a space for users to input SQL queries, execute them, and visualize the outcomes within the application.
 
 Considerations
-- This is a dummy application.
-- It must include a space to accept SQL queries.
-- The application does not need to have a backend, a query engine or query validation, or any syntax validation
-- The data that in the application displayed can be any chunk of data.
-- The application must have more than one query accompanied by its corresponding table of data.
-- The data and query need not to be in sync
-- Build for data analysts who will spend all day with the app. The app should have all the necessary features.
+- The application is a mockup.
+- It should feature a space for inputting SQL queries.
+- No backend, query engine, or syntax validation was required.
+- The displayed data could be arbitrary.
+- The application must have multiple queries accompanied by respective data tables.
+- Data and queries do not need to be synchronized.
+- Designed for data analysts' use with all necessary features.
 
 ## Data 
-The data used in the application is obtained from https://github.com/graphql-compose/graphql-compose-examples/raw/master/examples/northwind/data/csv/
-
-When the app bootstraps, the csv files from the above link are downloaded, data is extracted, converted and stored in a .js file for easy access and use.
+QueryPad fetches data from [here](https://github.com/graphql-compose/graphql-compose-examples/tree/master/examples/northwind/data/csv "here"). Upon initialization, CSV files from the provided link are downloaded, data extracted, converted, and stored in a .js file for ease of access and use.
 
 ## Features
 The app has 2 sections, the left sidebar and the editor on the right.
-The user can drag the divider to adjust the widht of both sections as per need
-Left Sidbar
-1. It has a space that shows available tables and their attributes
-2. User can search attributes using a search input
-3. There is a section below for saved queries
-4. user can also search these saved queries by their text 
 
-Editor pane
-1. The app has an input field to put SQL queries.
-2. There is a run button places close to the input that enables the run query functionality
-3. There is a button to Save the queries
-4. It also has an button that can downlaod all the data of the table
-5. The outbut of the table is virtualized so it can render big tables without any problem
+####Left Sidbar
+1. Displays available tables and their attributes.
+2. Enables attribute search through an input field.
+3. Contains a section for saved queries.
+4. Supports searching saved queries by their text.
+5. Can be resized to an extent using a draggable divider
 
-Dark mode - The app has a theme switch button that can toggle between light and dark themes
+####Editor pane
+1. Includes an input field for SQL queries.
+2. Features a run button next to the input field for executing queries.
+3. Provides a button to save queries.
+4. Offers a download button to retrieve all table data.
+5. Utilizes virtualization for rendering large tables efficiently.
 
-There are also some mocked features that were not added in the scope but showcase the usefulness.
-1. Source selector - Mocks the behavoiur of selecting the source of the data
-2. Edit query name - Each query can be saved/searched with a name
-3. Login - This is a much needed feature to personalise the app for users.
+####Dark Mode
+QueryPad supports a theme switch button to toggle between light and dark themes.
+
+####Mocked Features (Not Implemented)
+1. Source selector: Simulates selecting the data source.
+2. Edit query name: Simulates query naming.
+3. Login: A potential feature for personalizing the application for users.
 
 ## Screenshots
 
@@ -60,7 +60,7 @@ There are also some mocked features that were not added in the scope but showcas
 
 ### Page Performance Insights
 
-####1. Chrome Devtools - Performance
+#### 1. Chrome Devtools - Performance
 <strong>App load Time: 0.43 seconds (Chrome Dev tools - Performance)</strong>
 ##### Desktop Metris: 
 LCP: 0.434s
@@ -71,7 +71,7 @@ FCP: 0.45s
 
 <img width="652" alt="loadtime d" src="https://github.com/himanshusharma129/QueryPad/assets/42390569/77262b3e-1496-4d28-9a7d-249786f21839">
 
-####2. Chrome Devtools - Lighthouse - Analyse page load
+#### 2. Chrome Devtools - Lighthouse - Analyse page load
 ##### Desktop
 
 ![Screenshot 2024-02-06 at 6 11 49 PM](https://github.com/himanshusharma129/QueryPad/assets/42390569/a337f549-420e-4464-b2b1-6171c2a8cf6d)
@@ -79,7 +79,7 @@ FCP: 0.45s
 ##### Mobile
 <img width="970" alt="Screenshot 2024-02-07 at 3 43 02 PM" src="https://github.com/himanshusharma129/QueryPad/assets/42390569/f08bb480-f1bd-442a-b905-2ef1b07ed8f3">
 
-####3. Web.dev
+#### 3. Web.dev
 Desktop: https://pagespeed.web.dev/analysis/https-query-pad-vercel-app/lbfdsyrdu9?form_factor=desktop
 Mobile: https://pagespeed.web.dev/analysis/https-query-pad-vercel-app/lbfdsyrdu9?form_factor=mobile
 
@@ -87,27 +87,38 @@ Mobile: https://pagespeed.web.dev/analysis/https-query-pad-vercel-app/lbfdsyrdu9
 
 ## Optimisations
 
-As mentioned above, the app has met the standards of web performance metrics. The app has a TTI of 0.45s and the cumulative layout shift is 0.
+QueryPad meets web performance standards, with a TTI of 0.45s and zero cumulative layout shift.
 The app also meets the Progressive Web App (PWA) requirements and can be installed and used offline.
 
 ### 1. Page Load Time
-1. Initially, Monaco editor was used as SQL Input. But this brought alot of page time load delay. Also there was a lot of unused css with it which was reducing the performance metric. So I replaced the Monaco editor with simple input field.
-2. The app uses `react-virtualised` Table that can render the rows of the table on demand thus boosting the performance.
-3. Minimal dependencies have been used to build the app.
+1. Initially, Monaco editor was used as SQL Input. But this brought alot of page time load delay. Also there was a lot of unused css with it which was reducing the performance metric. So, replaced the Monaco editor with simple input field.
+2. Implemented react-virtualized Table for efficient rendering of table rows.
+3. Minimized dependencies for improved performance.
 
 ### 2. Responsiveness and UX
-1. The app uses a react-splitter-layout to enable re-sizable panes. The user can drag and adjust the width of the panes as per need,
+1. Employed react-splitter-layout for resizable panes, enhancing user experience.
 2. The website has been optimized for responsiveness, despite the fact that it's unlikely to be accessed frequently on mobile devices. `min-width` is used to give the table some space to show the columns with a scroll.
-3. The website is hosted on Vercel, which is considered to be one of the fastest free hosting mechanisms for JavaScript based Web apps due to it's CDN and caching benefits. It also provides a free SSL during hosting that is generally better for page security, and ranking.
+3. Hosted the website on Vercel for fast loading times, CDN benefits, caching, and SSL security.
 
 ### 3. Best Practices
-1. The app is build in `TypeScript` and types are defined and used gracefully, thus avoiding runtime errors.
-2. The app used a design system where css variables are used at all the places.
-3. Commonly used elements like button and text have generic components that easily styles them using differnt types and can be overriden if needed.
-4. The app is build with `styled-components` making the code easy to read/change, allowing type checking and avoiding classname issues
-5. The app is build using react functional components only for better code readability.
+1. Developed in `TypeScript` with defined types for enhanced code readability and prevention of runtime errors.
+2. Adopted a design system utilizing CSS variables throughout the application
+3. Created generic components for commonly used elements like buttons and text, allowing easy styling and overrides.
+4. Utilized styled-components for clear, type-safe, and classname-free CSS management.
+5. Exclusively used React functional components for improved code readability.
 
 
+##Dependencies used
+The app is build using ReactJs framework alongwith [TypeScript](https://www.typescriptlang.org/ "TypeScript").
+
+External libraries used
+1. [react-splitter-layout](https://www.npmjs.com/package/react-splitter-layout "react-splitter-layout")
+2. [react-spinners](https://www.npmjs.com/package/react-spinners "react-spinners")
+3. [react-virtualized](https://www.npmjs.com/package/react-virtualized "react-virtualized")
+4. [styled-components](https://www.npmjs.com/package/styled-components "styled-components")
+
+*The dependencies also include releated types.
+*
 
 ## 👨‍💻 Contributors 
 <table>
