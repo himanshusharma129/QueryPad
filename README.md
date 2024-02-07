@@ -120,6 +120,10 @@ External libraries used
 *The dependencies also include releated types.
 *
 
+##App demo and code walkthrough Video
+https://drive.google.com/file/d/1t5ONZW50chDfm5XO3jOR1ibw-y55ukWS/view?usp=sharing
+
+
 ## 👨‍💻 Contributors 
 <table>
   <tr>
