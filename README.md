@@ -7,7 +7,7 @@
 
 QueryPad is a mock application built as part of an interview task for Atlan. It simulates the experience of running SQL queries, viewing data, saving queries, and searching table attributes.
 
-##Problem Statement Outline
+## Problem Statement Outline
 >  The task involved creating, designing, and implementing a web-based application capable of running SQL queries and displaying their results. The application needed to include a space for users to input SQL queries, execute them, and visualize the outcomes within the application.
 
 Considerations
@@ -25,24 +25,24 @@ QueryPad fetches data from [here](https://github.com/graphql-compose/graphql-com
 ## Features
 The app has 2 sections, the left sidebar and the editor on the right.
 
-####Left Sidbar
+#### Left Sidbar
 1. Displays available tables and their attributes.
 2. Enables attribute search through an input field.
 3. Contains a section for saved queries.
 4. Supports searching saved queries by their text.
 5. Can be resized to an extent using a draggable divider
 
-####Editor pane
+#### Editor pane
 1. Includes an input field for SQL queries.
 2. Features a run button next to the input field for executing queries.
 3. Provides a button to save queries.
 4. Offers a download button to retrieve all table data.
 5. Utilizes virtualization for rendering large tables efficiently.
 
-####Dark Mode
+#### Dark Mode
 QueryPad supports a theme switch button to toggle between light and dark themes.
 
-####Mocked Features (Not Implemented)
+#### Mocked Features (Not Implemented)
 1. Source selector: Simulates selecting the data source.
 2. Edit query name: Simulates query naming.
 3. Login: A potential feature for personalizing the application for users.
@@ -108,19 +108,19 @@ The app also meets the Progressive Web App (PWA) requirements and can be install
 5. Exclusively used React functional components for improved code readability.
 
 
-##Dependencies used
+## Dependencies used
 The app is build using ReactJs framework alongwith [TypeScript](https://www.typescriptlang.org/ "TypeScript").
 
-External libraries used
+<strong>External libraries used</strong>
 1. [react-splitter-layout](https://www.npmjs.com/package/react-splitter-layout "react-splitter-layout")
 2. [react-spinners](https://www.npmjs.com/package/react-spinners "react-spinners")
 3. [react-virtualized](https://www.npmjs.com/package/react-virtualized "react-virtualized")
 4. [styled-components](https://www.npmjs.com/package/styled-components "styled-components")
 
 *The dependencies also include releated types.
-*
 
-##App demo and code walkthrough Video
+
+## App demo and code walkthrough Video
 https://drive.google.com/file/d/1t5ONZW50chDfm5XO3jOR1ibw-y55ukWS/view?usp=sharing
 
 
